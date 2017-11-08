@@ -98,42 +98,23 @@
                         </li>
 
                         <li>
-                            <div class="row wow fadeIn" data-wow-delay="0.4s">
+                            <div class="row" id="app">
                                 <div class="col-md-4">
                                     <div class="md-form">
-                                        <input type="text" id="form1" class="form-control validate">
+                                        <input type="text" id="amount" v-model.number="amount" class="form-control validate">
                                         <label for="form1" class="">Сумма</label>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="md-form">
-                                        <!--
-                                        <select class="browser-default" >
-                                            <option value="" disabled selected>Choose your country</option>
-                                            <option value="1">7 дней</option>
-                                            <option value="2">14 дней</option>
-                                            <option value="3">21 день</option>
-                                            <option value="3">1 месяц</option>
-                                            <option value="3">2 месяца</option>
-                                            <option value="3">3 месяца</option>
-                                            <option value="3">4 месяца</option>
-                                            <option value="3">5 месяцев</option>
-                                            <option value="3">6 месяцев</option>
-                                            <option value="3">7 месяцев</option>
-                                            <option value="3">8 месяцев</option>
-                                            <option value="3">9 месяцев</option>
-                                            <option value="3">10 месяцев</option>
-                                            <option value="3">11 месяцев</option>
-                                            <option value="3">12 месяцев</option>
-                                        </select>-->
-                                        <input type="text" id="form2" class="form-control validate">
-                                        <label for="form2" class="">Срок</label>
+                                        <input type="text" id="time" v-model.number="time" class="form-control validate">
+                                        <label for="form2" class="">Срок (дни)</label>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="md-form">
-                                        <input type="text" id="form3" class="form-control validate" readonly="readonly">
-                                        <label for="form3" class="">Ежемесячный платеж</label>
+                                        <input type="text" id="message" class="form-control validate invalid" style="color:white" v-model="payment" readonly="readonly">
+                                        <label for="form3" class="active" style="color:white">{{ message }}</label>
                                     </div>
                                 </div>
                             </div>
@@ -423,6 +404,9 @@
     <!--Google Maps-->
     <script src="https://maps.google.com/maps/api/js"></script>
 
+    <!-- Vue JS -->
+    <script src="https://unpkg.com/vue"></script>
+
     <script>
         function init_map() {
 
@@ -453,6 +437,94 @@
     <!-- Animations init-->
     <script>
         new WOW().init();
+    </script>
+
+    <script>
+
+        /*
+            50,000	200,000	500,000	1,000,000
+        14	730%	365%	183%	91%
+        30	365%	183%	91%	    48%
+        90	183%	91%	    48%	    48%
+        180	91%	    48%	    48%	    48%
+        365	48%	    48%	    48%	    48%
+        */
+
+        var matrix = [];
+        matrix.push({ order: 100, amount: 200000, time: 30, percent: 730 });
+        matrix.push({ order: 101, amount: 200000, time: 90, percent: 365 });
+        matrix.push({ order: 102, amount: 200000, time: 180, percent: 183 });
+        matrix.push({ order: 103, amount: 200000, time: 365, percent: 91 });
+        matrix.push({ order: 104, amount: 200000, time: 730, percent: 48 });
+
+        matrix.push({ order: 105, amount: 500000, time: 30, percent: 365 });
+        matrix.push({ order: 106, amount: 500000, time: 90, percent: 183 });
+        matrix.push({ order: 107, amount: 500000, time: 180, percent: 91 });
+        matrix.push({ order: 108, amount: 500000, time: 365, percent: 48 });
+        matrix.push({ order: 109, amount: 500000, time: 730, percent: 48 });
+
+        matrix.push({ order: 110, amount: 1000000, time: 30, percent: 183 });
+        matrix.push({ order: 111, amount: 1000000, time: 90, percent: 91 });
+        matrix.push({ order: 112, amount: 1000000, time: 180, percent: 48 });
+        matrix.push({ order: 113, amount: 1000000, time: 365, percent: 48 });
+        matrix.push({ order: 114, amount: 1000000, time: 730, percent: 48 });
+
+        matrix.push({ order: 115, amount: 10000000, time: 30, percent: 183 });
+        matrix.push({ order: 116, amount: 10000000, time: 90, percent: 91 });
+        matrix.push({ order: 117, amount: 10000000, time: 180, percent: 48 });
+        matrix.push({ order: 118, amount: 10000000, time: 365, percent: 48 });
+        matrix.push({ order: 119, amount: 10000000, time: 730, percent: 48 });
+
+        function getCalculatedAmount(amount, time)
+        {
+            var result = matrix.filter(function(x, idx) {
+                return x.amount >= amount && x.time >= time;
+            }); 
+            
+            var rate = result[0];
+            var dayRate = (rate.percent / 100) / 365;
+
+            var percentAmount = amount * dayRate * time;
+            var totalAmount = amount + percentAmount;
+            var amountByDay = totalAmount / time;
+            var amountByMonth = amountByDay * 30;
+
+            console.log('dayRate: ' + dayRate);
+            console.log('percentAmount: ' + percentAmount);
+            console.log('totalAmount: ' + totalAmount);
+            console.log('amountByDay: ' + amountByDay);
+            console.log('amountByMonth: ' + amountByMonth);
+
+            return { 
+                percentAmount: percentAmount,
+                totalAmount: totalAmount,
+                amountByDay: amountByDay,
+                amountByMonth: amountByMonth
+            };
+        }
+        
+        new Vue({
+            el: '#app',
+            data: {
+                amount: 10000,
+                time: 30,
+            },
+            computed: {
+                payment: function () {
+                    var calculatedAmount = getCalculatedAmount(this.amount, this.time);
+                    if (this.time < 60)
+                        return Math.round(calculatedAmount.totalAmount)
+                    else
+                        return Math.round(calculatedAmount.amountByMonth)
+                },
+                message: function () {
+                    if (this.time < 60)
+                        return 'Итоговый платеж'
+                    else
+                        return 'Ежемесячный платеж'
+                }
+            }
+        });
     </script>
 
 
