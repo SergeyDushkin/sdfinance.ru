@@ -99,19 +99,33 @@
 
                         <li>
                             <div class="row" id="app">
-                                <div class="col-md-4">
+                                <div class="col-md-4 mb-r">
                                     <div class="md-form">
                                         <input type="text" id="amount" v-model.number="amount" class="form-control validate">
                                         <label for="form1" class="">Сумма</label>
                                     </div>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-4 mb-r">
+                                        
                                     <div class="md-form">
                                         <input type="text" id="time" v-model.number="time" class="form-control validate">
-                                        <label for="form2" class="">Срок (дни)</label>
+                                        <label for="form2" class="">Срок</label>
                                     </div>
+
+                                    <div class="btn-group" data-toggle="buttons">
+                                        <label class="btn btn-primary btn-sm active">
+                                            <input type="radio" name="options" v-model="period" value="1" checked> дней
+                                        </label>
+                                        <label class="btn btn-primary btn-sm">
+                                            <input type="radio" name="options" v-model="period" value="30"> месяцев
+                                        </label>
+                                        <label class="btn btn-primary btn-sm">
+                                            <input type="radio" name="options" v-model="period" value="365"> лет
+                                        </label>
+                                    </div>
+                                        
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-4 mb-r">
                                     <div class="md-form">
                                         <input type="text" id="message" class="form-control validate invalid" style="color:white" v-model="payment" readonly="readonly">
                                         <label for="form3" class="active" style="color:white">{{ message }}</label>
@@ -508,17 +522,21 @@
             data: {
                 amount: 10000,
                 time: 30,
+                period: 1,
+                day: 1,
+                month: 30,
+                year: 365
             },
             computed: {
                 payment: function () {
-                    var calculatedAmount = getCalculatedAmount(this.amount, this.time);
-                    if (this.time < 60)
+                    var calculatedAmount = getCalculatedAmount(this.amount, this.time * this.period);
+                    if (this.time * this.period < 60)
                         return Math.round(calculatedAmount.totalAmount)
                     else
                         return Math.round(calculatedAmount.amountByMonth)
                 },
                 message: function () {
-                    if (this.time < 60)
+                    if (this.time * this.period < 60)
                         return 'Итоговый платеж'
                     else
                         return 'Ежемесячный платеж'
