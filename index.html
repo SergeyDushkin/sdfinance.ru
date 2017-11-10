@@ -108,18 +108,18 @@
                                 <div class="col-md-4 mb-r">
                                         
                                     <div class="md-form">
-                                        <input type="text" id="time" v-model.number="time" class="form-control validate">
-                                        <label for="form2" class="">Срок</label>
+                                        <input type="range" v-bind:min="min" v-bind:max="max" id="time" v-model.number="time" class="form-control" require>
+                                        <label for="form2" class="active">Срок ({{ time * period }} дней)</label>
                                     </div>
 
                                     <div class="btn-group" data-toggle="buttons">
-                                        <label class="btn btn-primary btn-sm active" v-on:click="period=1;time=7">
+                                        <label class="btn btn-primary btn-sm active" v-on:click="period=1;time=7;max=30">
                                             <input type="radio" name="options" value="1" checked> дней
                                         </label>
-                                        <label class="btn btn-primary btn-sm" v-on:click="period=30;time=1">
+                                        <label class="btn btn-primary btn-sm" v-on:click="period=30;time=1;max=12">
                                             <input type="radio" name="options" value="30"> месяцев
                                         </label>
-                                        <label class="btn btn-primary btn-sm" v-on:click="period=365;time=1">
+                                        <label class="btn btn-primary btn-sm" v-on:click="period=365;time=1;max=3">
                                             <input type="radio" name="options" value="365"> лет
                                         </label>
                                     </div>
@@ -470,24 +470,27 @@
         matrix.push({ order: 102, amount: 50000, time: 90, percent: 183 });
         matrix.push({ order: 103, amount: 50000, time: 180, percent: 91 });
         matrix.push({ order: 104, amount: 50000, time: 365, percent: 48 });
+        matrix.push({ order: 104, amount: 50000, time: 1100, percent: 48 });
 
         matrix.push({ order: 105, amount: 200000, time: 14, percent: 365 });
         matrix.push({ order: 106, amount: 200000, time: 30, percent: 183 });
         matrix.push({ order: 107, amount: 200000, time: 90, percent: 91 });
         matrix.push({ order: 108, amount: 200000, time: 180, percent: 48 });
         matrix.push({ order: 109, amount: 200000, time: 365, percent: 48 });
+        matrix.push({ order: 119, amount: 50000, time: 1100, percent: 48 });
 
         matrix.push({ order: 110, amount: 500000, time: 14, percent: 183 });
         matrix.push({ order: 111, amount: 500000, time: 30, percent: 91 });
         matrix.push({ order: 112, amount: 500000, time: 90, percent: 48 });
         matrix.push({ order: 113, amount: 500000, time: 180, percent: 48 });
         matrix.push({ order: 114, amount: 500000, time: 365, percent: 48 });
+        matrix.push({ order: 119, amount: 500000, time: 1100, percent: 48 });
 
         matrix.push({ order: 115, amount: 1000000, time: 14, percent: 91 });
         matrix.push({ order: 116, amount: 1000000, time: 30, percent: 48 });
         matrix.push({ order: 117, amount: 1000000, time: 90, percent: 48 });
         matrix.push({ order: 118, amount: 1000000, time: 180, percent: 48 });
-        matrix.push({ order: 119, amount: 1000000, time: 365, percent: 48 });
+        matrix.push({ order: 119, amount: 1000000, time: 1100, percent: 48 });
 
         function getCalculatedAmount(amount, time)
         {
@@ -521,11 +524,13 @@
             el: '#app',
             data: {
                 amount: 10000,
-                time: 30,
+                time: 7,
                 period: 1,
                 day: 1,
                 month: 30,
-                year: 365
+                year: 365,
+                min: 1,
+                max: 30
             },
             computed: {
                 payment: function () {
