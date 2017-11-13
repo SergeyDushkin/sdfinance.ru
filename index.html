@@ -135,13 +135,48 @@
                         </li>
 
                         <li>
-                            <button class="btn btn-lg btn-danger waves-effect waves-light">Получить деньги</button>
+                            <button class="btn btn-lg btn-danger waves-effect waves-light" onclick="this.parentNode.remove();document.getElementById('personForm').classList.remove('invisible');document.getElementById('personForm').classList.add('animated');document.getElementById('personForm').classList.add('fadeInDown');">Получить деньги</button>
                         </li>
 
                         <li class="payment">
                             <i class="fa fa-cc-visa fa-2x" aria-hidden="true"></i>
                             <i class="fa fa-cc-mastercard fa-2x" aria-hidden="true"></i>
                             <i class="fa fa-money fa-2x" aria-hidden="true"></i>
+                        </li>
+                    </ul>
+
+                    <ul id="personForm" class="invisible"> 
+                        <li>
+                            <p class="lead mt-4 mb-5">Расскажите о себе</p>
+                        </li>
+
+                        <li>
+                            <div class="row" id="app">
+                                <div class="col-md-4 mb-r">
+                                    <div class="md-form">
+                                        <input type="text" name="fio" v-model.number="amount" class="form-control validate" style="color:white">
+                                        <label for="fio" class="">ФИО</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mb-r">
+                                    <div class="md-form">
+                                        <input type="text" name="date" v-model.number="amount" class="form-control validate" style="color:white">
+                                        <label for="date" class="">Дата рождения</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mb-r">
+                                    <div class="md-form form-group text-left">
+                                        <input type="text" name="phone" v-model.number="amount" class="form-control validate" style="color:white">
+                                        <label for="phone" class="">Телефон или email</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+
+                        <li>
+                            <button class="btn btn-lg btn-primary waves-effect waves-light">Отправить заявку
+                                <i class="fa fa-paper-plane ml-1"></i>
+                            </button>
                         </li>
                     </ul>
                 </div>
