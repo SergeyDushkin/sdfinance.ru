@@ -93,91 +93,19 @@
                 <div class="container">
                     <ul>
                         <li>
-                            <h1 class="h1-responsive font-bold wow fadeInDown" data-wow-delay="0.2s">СД ФИНАНС</h1></li>
+                            <h1 class="h1-responsive font-bold wow fadeInDown title" data-wow-delay="0.2s">СД ФИНАНС</h1></li>
                         <li>
                             <p class="lead mt-4 mb-5 wow fadeInDown">Оформите заявку и сразу получите деньги!</p>
                         </li>
 
                         <li>
-                            <div class="row" id="app">
-                                <div class="col-md-4 mb-r">
-                                    <div class="md-form">
-                                        <input type="text" id="amount" v-model.number="amount" class="form-control validate" style="color:white">
-                                        <label for="form1" class="">Сумма</label>
-                                    </div>
-                                </div>
-                                <div class="col-md-4 mb-r">
-                                        
-                                    <div class="md-form">
-                                        <input type="range" v-bind:min="min" v-bind:max="max" id="time" v-model.number="time" class="form-control" require>
-                                        <label for="form2" class="active">Срок ({{ this.time }} {{ messagePeriod }})</label>
-                                    </div>
-
-                                    <div class="btn-group" data-toggle="buttons">
-                                        <label class="btn btn-primary btn-sm active" v-on:click="period=1;time=7;max=30">
-                                            <input type="radio" name="options" value="1" checked> дней
-                                        </label>
-                                        <label class="btn btn-primary btn-sm" v-on:click="period=30;time=1;max=12">
-                                            <input type="radio" name="options" value="30"> месяцев
-                                        </label>
-                                        <label class="btn btn-primary btn-sm" v-on:click="period=365;time=1;max=3">
-                                            <input type="radio" name="options" value="365"> лет
-                                        </label>
-                                    </div>
-                                        
-                                </div>
-                                <div class="col-md-4 mb-r">
-                                    <div class="md-form">
-                                        <input type="text" id="message" class="form-control validate invalid" style="color:white" v-model="payment" readonly="readonly">
-                                        <label for="form3" class="active" style="color:white">{{ message }}</label>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-
-                        <li>
-                            <button class="btn btn-lg btn-danger waves-effect waves-light" onclick="this.parentNode.remove();document.getElementById('personForm').classList.remove('invisible');document.getElementById('personForm').classList.add('animated');document.getElementById('personForm').classList.add('fadeInDown');">Получить деньги</button>
+                            <button class="btn btn-lg btn-danger waves-effect waves-light" onclick="$('html,body').animate({ scrollTop: $('#ticket').offset().top - 150 }, 1000);">Получить деньги</button>
                         </li>
 
                         <li class="payment">
                             <i class="fa fa-cc-visa fa-2x" aria-hidden="true"></i>
                             <i class="fa fa-cc-mastercard fa-2x" aria-hidden="true"></i>
                             <i class="fa fa-money fa-2x" aria-hidden="true"></i>
-                        </li>
-                    </ul>
-
-                    <ul id="personForm" class="invisible"> 
-                        <li>
-                            <p class="lead mt-4 mb-5">Расскажите о себе</p>
-                        </li>
-
-                        <li>
-                            <div class="row" id="app">
-                                <div class="col-md-4 mb-r">
-                                    <div class="md-form">
-                                        <input type="text" id="client_name" name="fio" v-model.number="amount" class="form-control validate" style="color:white">
-                                        <label for="fio" class="">Имя</label>
-                                    </div>
-                                </div>
-                                <div class="col-md-4 mb-r">
-                                    <div class="md-form">
-                                        <input type="text" id="client_date" name="date" v-model.number="amount" class="form-control validate" style="color:white">
-                                        <label for="date" class="">Дата рождения</label>
-                                    </div>
-                                </div>
-                                <div class="col-md-4 mb-r">
-                                    <div class="md-form form-group text-left">
-                                        <input type="text" id="client_phone" name="phone" v-model.number="amount" class="form-control validate" style="color:white">
-                                        <label for="phone" class="">Телефон или email</label>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-
-                        <li>
-                            <button class="btn btn-lg btn-primary waves-effect waves-light" onclick="sendMail()">Отправить заявку
-                                <i class="fa fa-paper-plane ml-1"></i>
-                            </button>
                         </li>
                     </ul>
                 </div>
@@ -187,7 +115,83 @@
     </header>
 
     <!-- Main container-->
-    <div class="container">
+    <div id="app" class="container">
+
+        <div class="divider-new pt-5">
+            <h2 class="h2-responsive wow fadeIn">Оформите заявку</h2>
+        </div>
+
+        <!--Section: Займы малому бизнесу-->
+        <section id="ticket">
+
+            <div class="row">
+                <div class="col-md-4 mb-r">
+                    <div class="md-form">
+                        <input type="range" v-bind:min="10000" v-bind:max="1000000" step="1000" id="amount" v-model.number="amount" class="form-control validate" require>
+                        <label for="form1" class="active">Сумма ({{ this.formattedAmount }})</label>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-r">
+                        
+                    <div class="md-form">
+                        <input type="range" v-bind:min="min" v-bind:max="max" id="time" v-model.number="time" class="form-control" require>
+                        <label for="form2" class="active">Срок ({{ this.time }} {{ messagePeriod }})</label>
+                    </div>
+
+                    <div class="btn-group" data-toggle="buttons">
+                        <label class="btn btn-primary btn-sm active" v-on:click="period=1;time=7;max=30">
+                            <input type="radio" name="options" value="1" checked> дней
+                        </label>
+                        <label class="btn btn-primary btn-sm" v-on:click="period=30;time=1;max=12">
+                            <input type="radio" name="options" value="30"> месяцев
+                        </label>
+                        <label class="btn btn-primary btn-sm" v-on:click="period=365;time=1;max=3">
+                            <input type="radio" name="options" value="365"> лет
+                        </label>
+                    </div>
+                        
+                </div>
+                <div class="col-md-4 mb-r">
+                    <div class="md-form">
+                        <input type="text" id="message" class="form-control validate valid" v-model="payment" readonly="readonly">
+                        <label for="form3" class="active">{{ message }}</label>
+                    </div>
+                </div>
+            </div>
+            
+            <h4 class="card-title text-center">Расскажите о себе</h4>
+
+            <div class="row">
+                <div class="col-md-3 mb-r">
+                    <div class="md-form">
+                        <input type="text" id="client_name" name="fio" class="form-control validate">
+                        <label for="fio">Имя</label>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-r">
+                    <div class="md-form">
+                        <input type="text" id="client_date" name="date"class="form-control validate">
+                        <label for="date">Дата рождения</label>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-r">
+                    <div class="md-form form-group text-left">
+                        <input type="text" id="client_phone" name="phone" class="form-control validate">
+                        <label for="phone">Телефон или email</label>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-r">
+                    <div class="md-form form-group text-left">
+                        <button class="btn btn-sm btn-primary waves-effect waves-light" onclick="sendMail()">Отправить заявку
+                            <i class="fa fa-paper-plane ml-1"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+
+        </section>
+        <!--/Section: Займы малому бизнесу-->
 
         <div class="divider-new pt-5">
             <h2 class="h2-responsive wow fadeIn" data-wow-delay="0.2s">СД ФИНАНС – безграничный кредит доверия</h2>
@@ -553,6 +557,9 @@
                         return Math.round(calculatedAmount.totalAmount).toLocaleString('ru') + '₽'
                     else
                         return Math.round(calculatedAmount.amountByMonth).toLocaleString('ru') + '₽'
+                },
+                formattedAmount: function() {
+                    return this.amount.toLocaleString('ru') + '₽'
                 },
                 message: function () {
                     if (this.time * this.period < this.month)
