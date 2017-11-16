@@ -155,19 +155,19 @@
                             <div class="row" id="app">
                                 <div class="col-md-4 mb-r">
                                     <div class="md-form">
-                                        <input type="text" name="fio" v-model.number="amount" class="form-control validate" style="color:white">
+                                        <input type="text" id="client_name" name="fio" v-model.number="amount" class="form-control validate" style="color:white">
                                         <label for="fio" class="">Имя</label>
                                     </div>
                                 </div>
                                 <div class="col-md-4 mb-r">
                                     <div class="md-form">
-                                        <input type="text" name="date" v-model.number="amount" class="form-control validate" style="color:white">
+                                        <input type="text" id="client_date" name="date" v-model.number="amount" class="form-control validate" style="color:white">
                                         <label for="date" class="">Дата рождения</label>
                                     </div>
                                 </div>
                                 <div class="col-md-4 mb-r">
                                     <div class="md-form form-group text-left">
-                                        <input type="text" name="phone" v-model.number="amount" class="form-control validate" style="color:white">
+                                        <input type="text" id="client_phone" name="phone" v-model.number="amount" class="form-control validate" style="color:white">
                                         <label for="phone" class="">Телефон или email</label>
                                     </div>
                                 </div>
@@ -175,7 +175,7 @@
                         </li>
 
                         <li>
-                            <button class="btn btn-lg btn-primary waves-effect waves-light" onclick="alert('Мы с вами свяжемся')">Отправить заявку
+                            <button class="btn btn-lg btn-primary waves-effect waves-light" onclick="sendMail()">Отправить заявку
                                 <i class="fa fa-paper-plane ml-1"></i>
                             </button>
                         </li>
@@ -375,6 +375,9 @@
     <!--Google Maps-->
     <script src="https://maps.google.com/maps/api/js"></script>
 
+    <script src="js/polyfill.min.js"></script>
+    <script src="js/axios.min.js"></script>
+
     <!-- Vue JS -->
     <script src="https://unpkg.com/vue"></script>
 
@@ -411,6 +414,33 @@
     </script>
 
     <script>
+
+        function jsonToFormEncoded(data) {
+            var formBody = [];
+            for (var property in data) {
+            var encodedKey = encodeURIComponent(property);
+            var encodedValue = encodeURIComponent(data[property]);
+            formBody.push(encodedKey + "=" + encodedValue);
+            }
+            return formBody.join("&");
+        }
+
+        function sendMail() {
+            var data = {
+                email: $('#client_phone').val(),
+                name: $('#client_name').val(),
+                date: $('#client_date').val(),
+                message: 'Кредит ' + $('#amount').val() + ' рублей на ' + $('#time').val() + ' дней',
+            };
+            const config = { headers: { 'Content-Type': ' application/x-www-form-urlencoded' } };
+            axios.post('send.php', jsonToFormEncoded(data), config)
+                .then(function (res) {
+                    alert('Мы с вами свяжемся');
+                })
+                .catch(function() { 
+                    alert('Ошибка при отправке запроса. Попробуйте еще раз.')
+                });
+        }
 
         /**
         * Возвращает единицу измерения с правильным окончанием
