@@ -54,27 +54,19 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mr-auto">
-                        <li class="nav-item active">
-                            <a class="nav-link" href="#">Займы <span class="sr-only">(current)</span></a>
-                        </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Акции и скидки</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Услуги</a>
+                            <a class="nav-link" href="#" onclick="$('html,body').animate({ scrollTop: $('#contact').offset().top - 150 }, 1000);">О компании</a>
                         </li>
                         <li class="nav-item btn-group">
-                            <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">О компании 
+                            <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Займы
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                <a class="dropdown-item" href="#">О компании</a>
-                                <a class="dropdown-item" href="#">Наши отделения</a>
-                                <a class="dropdown-item" href="#">Контакты</a>
-                                <a class="dropdown-item" href="#">Новости</a>
-                                <a class="dropdown-item" href="#">Отзывы клиентов</a>
-                                <a class="dropdown-item" href="#">Работа в компании</a>
-                                <a class="dropdown-item" href="#">Безопасность</a>
+                                <a class="dropdown-item" href="#" onclick="$('html,body').animate({ scrollTop: $('#features-for-people').offset().top - 150 }, 1000);">физ лицам</a>
+                                <a class="dropdown-item" href="#" onclick="$('html,body').animate({ scrollTop: $('#features-for-company').offset().top - 150 }, 1000);">малому бизнесу</a>
                             </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" onclick="$('html,body').animate({ scrollTop: $('#contact').offset().top - 150 }, 1000);">Контакты</a>
                         </li>
                     </ul>
                     <ul class="navbar-nav mr-auto">
@@ -215,7 +207,7 @@
         </div>
 
         <!--Section: Займы физ лицам-->
-        <section id="best-features">
+        <section id="features-for-people">
 
             <p>Срочно нужны деньги в долг? Не знаете, где взять в долг? Хотели бы получить наличные быстро?</p>
             <p>СД ФИНАНС предлагает вам новое решение – быстрый займ денег. При этом взять деньги в долг Вы сможете на требуемый Вам срок и без дополнительных комиссий.</p>
@@ -229,7 +221,7 @@
         </div>
 
         <!--Section: Займы малому бизнесу-->
-        <section id="best-features">
+        <section id="features-for-company">
 
             <p>Доступное финансирование для предпринимателей.</p>
             <p>Предоставим займы на оборотку, выполнение тендера, закупку товаров и сырья.</p>
@@ -248,26 +240,30 @@
         </div>
 
         <!--Section: Contact-->
-        <section id="contact pb-5">
+        <section id="contact">
             <div class="row">
                 <!--First column-->
                 <div class="col-md-8 mb-5">
-                    <div id="map-container" class="z-depth-1 wow fadeIn" style="height: 300px"></div>
+                    <div id="map-container" class="z-depth-1" style="height: 300px"></div>
                 </div>
                 <!--/First column-->
 
                 <!--Second column-->
                 <div class="col-md-4">
                     <ul class="text-center list-unstyled">
-                        <li class="wow fadeIn" data-wow-delay="0.2s"><i class="fa fa-map-marker teal-text fa-lg"></i>
+                        <li><i class="fa fa-map-marker teal-text fa-2x"></i>
                             <p>123100, г. Москва, Пресненская наб., 12, Москва Сити, Башня "Федерация"</p>
                         </li>
 
-                        <li class="wow fadeIn mt-5 pt-2" data-wow-delay="0.3s"><i class="fa fa-phone teal-text fa-lg"></i>
+                        <li class="mt-5 pt-2" data-wow-delay="0.3s">
+                            <a href="tel:+79773131770" style="padding:3px;"><i class="fa fa-phone teal-text fa-2x"></i></a>
+                            <a href="whatsapp://tel:+79773131770" style="padding:3px;"><i class="fa fa-whatsapp teal-text fa-2x"></i></a>
+                            <a href="tg://resolve?domain=+79773131770" style="padding:3px;"><i class="fa fa-telegram teal-text fa-2x"></i></a>
+                            <a href="viber://add?number=%2B79773131770" style="padding:3px;"><i class="fa fa-whatsapp fa-2x" style="color:#8f5db7"></i></a>
                             <p><a href="tel:+79773131770">+7 977 31 31 770</a></p>
                         </li>
 
-                        <li class="wow fadeIn mt-5 pt-2" data-wow-delay="0.4s"><i class="fa fa-envelope teal-text fa-lg"></i>
+                        <li class="mt-5 pt-2" data-wow-delay="0.4s"><i class="fa fa-envelope teal-text fa-2x"></i>
                             <p><a href="mailto:hi@sdfinance.ru">hi@sdfinance.ru</a></p>
                         </li>
                     </ul>
@@ -380,9 +376,6 @@
     <!-- MDB core JavaScript -->
     <script type="text/javascript" src="js/mdb.min.js"></script>
 
-    <!--Google Maps-->
-    <script src="https://maps.google.com/maps/api/js"></script>
-
     <script src="js/polyfill.min.js"></script>
     <script src="js/axios.min.js"></script>
 
@@ -392,7 +385,7 @@
     <script>
         function init_map() {
 
-            var var_location = new google.maps.LatLng(40.725118, -73.997699);
+            var var_location = new google.maps.LatLng(55.7475153, 37.5388856);
 
             var var_mapoptions = {
                 center: var_location,
@@ -403,18 +396,18 @@
             var var_marker = new google.maps.Marker({
                 position: var_location,
                 map: var_map,
-                title: "New York"
+                title: "Башня Федерация"
             });
 
             var var_map = new google.maps.Map(document.getElementById("map-container"),
                 var_mapoptions);
 
             var_marker.setMap(var_map);
-
         }
-
-        google.maps.event.addDomListener(window, 'load', init_map);
     </script>
+
+    <!--Google Maps-->
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBHqIbeYTm6ajARJo9FTHahbFqcy3WHTeA&callback=init_map"></script>
 
     <!-- Animations init-->
     <script>
