@@ -148,10 +148,10 @@
 
                     <div class="btn-group" data-toggle="buttons">
                         <label class="btn btn-primary btn-sm active" v-on:click="period=1;time=7;max=30">
-                            <input type="radio" name="options" value="1" checked> дней
+                            <input type="radio" name="options" value="1"> дней
                         </label>
                         <label class="btn btn-primary btn-sm" v-on:click="period=30;time=1;max=12">
-                            <input type="radio" name="options" value="30"> месяцев
+                            <input type="radio" name="options" value="30" checked> месяцев
                         </label>
                         <label class="btn btn-primary btn-sm" v-on:click="period=365;time=1;max=3">
                             <input type="radio" name="options" value="365"> лет
@@ -165,7 +165,7 @@
                 <div class="col-md-4"></div>
                 <div class="col-md-4">
                     <div class="md-form">
-                        <input type="text" name="payment" class="form-control validate valid" v-model="payment" readonly="readonly">
+                        <input type="text" id="payment" name="payment" class="form-control validate valid" v-model="payment" readonly="readonly">
                         <label for="payment" class="active">{{ message }}</label>
                     </div>
                 </div>
@@ -445,8 +445,8 @@
                 phone: $('#client_phone').val(),
                 name: $('#client_name').val(),
                 date: $('#client_date').val(),
-                message: 'Кредит ' + $('#amount').val() + ' рублей на ' + $('#time').val() + ' дней',
-            };
+                message: 'Займ ' + $('#amount').val() + ' рублей на ' + $('#time').val() + ' * ' + $('input[name=options]:checked').val() + ' дней с платежом: ' + $('#payment').val(),        
+	    };
             const config = { headers: { 'Content-Type': ' application/x-www-form-urlencoded' } };
             axios.post('send.php', jsonToFormEncoded(data), config)
                 .then(function (res) {

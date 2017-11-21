@@ -9,8 +9,16 @@
 
     $headers = "Content-Type: text/html; charset=UTF-8";
     $to = "hi@sdfinance.ru";
-    $subject = "Форма обратной связи от: $email_address $phone";
-    $message = "Вы получили новое сообщение через форму обратной связи.\n\n"."Отправитель: $email_address\n\nИмя: $name\n\nДата рождения: $date\n\nСообщение: $message_email";
+
+    $tz_object = new DateTimeZone('Europe/Moscow');
+    $now = new DateTime();
+    $now->setTimezone($tz_object);
+    $subject = $now->format('Y-m-d H:i:s');
+    $message = "Имя: " . $name . "<br/>" .	
+		"Телефон: " . $phone . "<br/>" . 
+		"E-mail: " . $email_address . "<br/>" .
+		"Дата рождения: " . $date . "<br/>" .
+		"Сообщение: " . $message_email . "<br/>";
 
     var_dump(mail($to,$subject,$message,$headers));
 
