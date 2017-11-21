@@ -171,22 +171,28 @@
             </div>
 
             <div class="row text-center">
-                <div class="col-md-4">
+                <div class="col-md-3">
                     <div class="md-form">
                         <input type="text" id="client_name" name="fio" class="form-control validate">
                         <label for="fio" class="active">Имя</label>
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-3">
                     <div class="md-form">
                         <input type="date" id="client_date" name="date"class="form-control validate">
                         <label for="date" class="active">Дата рождения</label>
                     </div>
                 </div>
-                <div class="col-md-4 mb-r">
+                <div class="col-md-3 mb-r">
                     <div class="md-form form-group text-left">
-                        <input type="tel" id="client_phone" name="phone" class="form-control validate">
-                        <label for="phone" class="active">Телефон или email</label>
+                        <input type="tel" id="client_phone" name="phone" class="form-control validate" pattern="(\+?\d[- .]*){7,13}">
+                        <label for="phone" class="active">Телефон</label>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-r">
+                    <div class="md-form form-group text-left">
+                        <input type="email" id="client_email" name="client_email" class="form-control validate">
+                        <label for="client_email" class="active">Еmail</label>
                     </div>
                 </div>
             </div>
@@ -433,7 +439,8 @@
 
         function sendMail() {
             var data = {
-                email: $('#client_phone').val(),
+                email: $('#client_email').val(),
+                phone: $('#client_phone').val(),
                 name: $('#client_name').val(),
                 date: $('#client_date').val(),
                 message: 'Кредит ' + $('#amount').val() + ' рублей на ' + $('#time').val() + ' дней',
