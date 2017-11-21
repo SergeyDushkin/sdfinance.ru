@@ -160,43 +160,45 @@
 			</div>
 
 			<div class="row text-center">
-                    <div class="col-md-4"></div>
-                    <div class="col-md-4 md-form">
-                        <input type="text" id="message" class="form-control validate valid" v-model="payment" readonly="readonly">
-                        <label for="form3" class="active">{{ message }}</label>
+                <div class="col-md-4"></div>
+                <div class="col-md-4">
+                    <div class="md-form">
+                        <input type="text" name="payment" class="form-control validate valid" v-model="payment" readonly="readonly">
+                        <label for="payment" class="active">{{ message }}</label>
                     </div>
-                    <div class="col-md-4"></div>
+                </div>
+                <div class="col-md-4"></div>
             </div>
 
             <div class="row text-center">
                 <div class="col-md-4">
                     <div class="md-form">
                         <input type="text" id="client_name" name="fio" class="form-control validate">
-                        <label for="fio">Имя</label>
+                        <label for="fio" class="active">Имя</label>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="md-form">
-                        <input type="text" id="client_date" name="date"class="form-control validate">
-                        <label for="date">Дата рождения</label>
+                        <input type="date" id="client_date" name="date"class="form-control validate">
+                        <label for="date" class="active">Дата рождения</label>
                     </div>
                 </div>
                 <div class="col-md-4 mb-r">
                     <div class="md-form form-group text-left">
-                        <input type="text" id="client_phone" name="phone" class="form-control validate">
-                        <label for="phone">Телефон или email</label>
+                        <input type="tel" id="client_phone" name="phone" class="form-control validate">
+                        <label for="phone" class="active">Телефон или email</label>
                     </div>
                 </div>
             </div>
             
 			<div class="row text-center">
-                    <div class="col-md-4"></div>
-                    <div class="col-md-4">
-            			<button class="btn btn-sm btn-primary waves-effect waves-light" onclick="sendMail()" type="button">Отправить заявку
-                			<i class="fa fa-paper-plane ml-1"></i>
-                		</button>
-                    </div>
-                    <div class="col-md-4"></div>
+                <div class="col-md-4"></div>
+                <div class="col-md-4">
+                    <button class="btn btn-sm btn-primary waves-effect waves-light" onclick="sendMail()" type="button">Отправить заявку
+                        <i class="fa fa-paper-plane ml-1"></i>
+                    </button>
+                </div>
+                <div class="col-md-4"></div>
             </div>
 
         </section>
@@ -214,17 +216,16 @@
                 	<h4 class="card-title text-center">Безграничный кредит доверия</h4>
 		            <p>Команда из профессиональных финансовых консультантов поможет вам подобрать наиболее удобные для вас условия кредитования. Только наша компания обеспечивает индивидуальный подход к каждому клиенту</p>
 
-                	<img src="img/photos/img_02.jpg"/>	
+                	<img class="img-fluid" src="img/photos/img_02.jpg"/>	
+                    
+                    <hr class="w-100 clearfix d-sm-none">
 
 		            <p>СД ФИНАНС предлагает вам новое решение – быстрый займ денег без лишних документов. При этом взять деньги в долг Вы сможете на требуемый Вам срок и без дополнительных комиссий.</p>
                 </div>
 			</div>
 
             <div class="row">
-
             	<div class="col-md-12 mb-r text-left">
-
-
             	</div>
             </div>
         </section>
@@ -239,7 +240,7 @@
 
 	            <div class="row">
 	                <div class="col-md-3 mb-r text-left" >
-                            <img src="img/photos/img_04.jpg"/>	
+                        <img class="img-fluid" src="img/photos/img_04.jpg"/>	
                 	</div>
 
             		<div class="col-md-9 mb-r text-left">
@@ -270,7 +271,7 @@
 	        		</div>
 
 	                <div class="col-md-6 mb-r text-right" >
-                            <img src="img/photos/img_08.jpg"/>	
+                        <img class="img-fluid" src="img/photos/img_08.jpg"/>	
                 	</div>
         	</div>
         </section>
@@ -325,7 +326,7 @@
         <!--Footer Links-->
         <div class="container-fluid">
             
-            <div class="row" style="">
+            <div class="row">
                 <div class="col-lg-4 col-md-6 ml-auto">
                     <h5 class="title font-bold mt-3 mb-4">СД ФИНАНС</h5>
                     <ul>
