@@ -66,8 +66,9 @@
                             <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Займы
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                <a class="dropdown-item" href="#" onclick="$('html,body').animate({ scrollTop: $('#features-for-people').offset().top - 150 }, 1000);$('.collapse').collapse('hide')">физ лицам</a>
-                                <a class="dropdown-item" href="#" onclick="$('html,body').animate({ scrollTop: $('#features-for-company').offset().top - 150 }, 1000);$('.collapse').collapse('hide')">малому бизнесу</a>
+	                        	<a class="dropdown-item" href="#" onclick="$('html,body').animate({ scrollTop: $('#ticket').offset().top - 150 }, 1000);$('.collapse').collapse('hide')">Заявка на займ</a>
+                                <a class="dropdown-item" href="#" onclick="$('html,body').animate({ scrollTop: $('#features-for-people').offset().top - 150 }, 1000);$('.collapse').collapse('hide')">Частным лицам</a>
+                                <a class="dropdown-item" href="#" onclick="$('html,body').animate({ scrollTop: $('#features-for-company').offset().top - 150 }, 1000);$('.collapse').collapse('hide')">Малому бизнесу</a>
                             </div>
                         </li>
                         <li class="nav-item">
@@ -92,7 +93,7 @@
                         <li>
                             <h1 class="h1-responsive font-bold wow fadeInDown title" data-wow-delay="0.2s">СД ФИНАНС</h1></li>
                         <li>
-                            <p class="lead mt-4 mb-5 wow fadeInDown">поддержит ваш бизнес финансовыми ресурсами на выгодных условиях</p>
+                            <p class="lead mt-4 mb-5 wow fadeInDown">Поддержит финансами Вас и Ваш бизнес</p>
                         </li>
 
                         <li>
@@ -118,22 +119,26 @@
     <!-- Main container-->
     <div id="app" class="container">
 
-        <div class="divider-new pt-3">
-            <h2 class="h2-responsive">Оформите заявку</h2>
-        </div>
-
         <!--Section: Займы малому бизнесу-->
-        <section id="ticket">
+        <section id="ticket" class="text-center">
+	        <div class="divider-new pt-3">
+            	<h2 class="h2-responsive">Оформление заявки</h2>
+        	</div>
 
             <div class="row text-center">
-                <div class="col-md-4 mb-r">
+            	<div class="col-md-3 mb-r"></div>
+                <div class="col-md-6 mb-r">
                     <div class="md-form">
                         <input type="range" v-bind:min="10000" v-bind:max="1000000" step="1000" id="amount" v-model.number="amount" class="form-control validate" require>
                         <label for="form1" class="active">Сумма ({{ this.formattedAmount }})</label>
                     </div>
                 </div>
+                <div class="col-md-3 mb-r"></div>
+            </div>
+
+			<div class="row text-center">
+				<div class="col-md-4 mb-r"></div>
                 <div class="col-md-4 mb-r">
-                        
                     <div class="md-form">
                         <input type="range" v-bind:min="min" v-bind:max="max" id="time" v-model.number="time" class="form-control" require>
                         <label for="form2" class="active">Срок ({{ this.time }} {{ messagePeriod }})</label>
@@ -150,46 +155,49 @@
                             <input type="radio" name="options" value="365"> лет
                         </label>
                     </div>
-                        
                 </div>
-                <div class="col-md-4 mb-r">
-                    <div class="md-form">
+                <div class="col-md-4 mb-r"></div>
+			</div>
+
+			<div class="row text-center">
+                    <div class="col-md-4"></div>
+                    <div class="col-md-4 md-form">
                         <input type="text" id="message" class="form-control validate valid" v-model="payment" readonly="readonly">
                         <label for="form3" class="active">{{ message }}</label>
                     </div>
-                </div>
+                    <div class="col-md-4"></div>
             </div>
-            
-            <h4 class="card-title text-center">Расскажите о себе</h4>
 
             <div class="row text-center">
-                <div class="col-md-3 mb-r">
+                <div class="col-md-4">
                     <div class="md-form">
                         <input type="text" id="client_name" name="fio" class="form-control validate">
                         <label for="fio">Имя</label>
                     </div>
                 </div>
-                <div class="col-md-3 mb-r">
+                <div class="col-md-4">
                     <div class="md-form">
                         <input type="text" id="client_date" name="date"class="form-control validate">
                         <label for="date">Дата рождения</label>
                     </div>
                 </div>
-                <div class="col-md-3 mb-r">
+                <div class="col-md-4 mb-r">
                     <div class="md-form form-group text-left">
                         <input type="text" id="client_phone" name="phone" class="form-control validate">
                         <label for="phone">Телефон или email</label>
                     </div>
                 </div>
-                <div class="col-md-3 mb-r">
-                    <div class="md-form form-group text-left">
-                        <button class="btn btn-sm btn-primary waves-effect waves-light" onclick="sendMail()">Отправить заявку
-                            <i class="fa fa-paper-plane ml-1"></i>
-                        </button>
-                    </div>
-                </div>
             </div>
             
+			<div class="row text-center">
+                    <div class="col-md-4"></div>
+                    <div class="col-md-4">
+            			<button class="btn btn-sm btn-primary waves-effect waves-light" onclick="sendMail()" type="button">Отправить заявку
+                			<i class="fa fa-paper-plane ml-1"></i>
+                		</button>
+                    </div>
+                    <div class="col-md-4"></div>
+            </div>
 
         </section>
         <!--/Section: Займы малому бизнесу-->
@@ -200,28 +208,47 @@
 
         <!--Section: About-->
         <section id="about" class="text-center" data-wow-delay="0.2s">
+             
+            <div class="row text-center">
+                <div class="col-md-12">
+                	<h4 class="card-title text-center">Безграничный кредит доверия</h4>
+		            <p>Команда из профессиональных финансовых консультантов поможет вам подобрать наиболее удобные для вас условия кредитования. Только наша компания обеспечивает индивидуальный подход к каждому клиенту</p>
 
-            <h4 class="card-title text-center">Безграничный кредит доверия</h4>
+                	<img src="img/photos/img_02.jpg"/>	
 
-            <p>Срочно нужны деньги в долг? Не знаете, где взять в долг небольшую сумму до зарплаты? Хотели бы получить наличные быстро и без залога? Нужно оплатить лечение, путевку, обучение школьника или детский сад малыша. Не хватает на ремонт, покупку мебели, выплату по кредиту за автомобиль. Полагаете, что в любом из этих случаев придется долго оформлять документы и искать поручителей? Уверены, что деньги под проценты можно будет взять лишь на длительный срок?</p>
-            <p>СД ФИНАНС предлагает вам новое решение – займ денег без лишнего оформления документов. При этом взять деньги в долг Вы сможете на требуемый Вам срок и без дополнительных комиссий. И главное - без залога и поручителей.</p>
+		            <p>СД ФИНАНС предлагает вам новое решение – быстрый займ денег без лишних документов. При этом взять деньги в долг Вы сможете на требуемый Вам срок и без дополнительных комиссий.</p>
+                </div>
+			</div>
 
+            <div class="row">
+
+            	<div class="col-md-12 mb-r text-left">
+
+
+            	</div>
+            </div>
         </section>
         <!--Section: About-->
 
         <div class="divider-new pt-1">
-            <h2 class="h2-responsive">Займы физ лицам</h2>
+            <h2 class="h2-responsive">Займы частным лицам</h2>
         </div>
 
-        <!--Section: Займы физ лицам-->
+        <!--Section: Займы частным лицам-->
         <section class="text-center" id="features-for-people">
 
-            <p>Срочно нужны деньги в долг? Не знаете, где взять в долг? Хотели бы получить наличные быстро?</p>
-            <p>СД ФИНАНС предлагает вам новое решение – быстрый займ денег. При этом взять деньги в долг Вы сможете на требуемый Вам срок и без дополнительных комиссий.</p>
-            <p>Без ненужных формальностей предоставим Вам кредит под залог авто или под залог недвижимости. Не потребуем от Вас лишних документов и справок о доходах. И у нас нет никаких неприятных сюрпризов в виде дополнительных платежей, комиссий или скрытых процентов.</p>
+	            <div class="row">
+	                <div class="col-md-3 mb-r text-left" >
+                            <img src="img/photos/img_04.jpg"/>	
+                	</div>
 
+            		<div class="col-md-9 mb-r text-left">
+			            <p>Срочно нужны деньги в долг? Хотели бы получить наличные быстро и без залога? Нужно оплатить лечение, путевку или обучение. Не хватает на ремонт, покупку мебели, выплату по кредиту за автомобиль.</p>
+		            	<p>Без ненужных формальностей предоставим Вам кредит под залог авто или под залог недвижимости. Не потребуем от Вас лишних документов и справок о доходах. И у нас нет никаких неприятных сюрпризов в виде дополнительных платежей, комиссий или скрытых процентов.</p>
+            		</div>
+            	</div>
         </section>
-        <!--/Section: Займы физ лицам-->
+        <!--/Section: Займы частным лицам-->
 
         <div class="divider-new pt-1">
             <h2 class="h2-responsive">Займы малому бизнесу</h2>
@@ -229,16 +256,23 @@
 
         <!--Section: Займы малому бизнесу-->
         <section class="text-center" id="features-for-company">
+        	 <div class="row">
+            		<div class="col-md-6 mb-r text-left">
+			            <p>Доступное финансирование для предпринимателей.</p>
+			            <p>Предоставим оборотные средства на выполнение тендера, закупку товаров и сырья.</p>
+			            <ul class="text-left">
+			                <li>До 3 000 000 руб.</li>
+			                <li>Рассмотрение заявки за 1 день</li>
+			                <li>Минимальный пакет документов</li>
+			                <li>Залог не обязателен</li>
+			                <li>Без комиссий и обязательного страхования</li>
+			            </ul>
+	        		</div>
 
-            <p>Доступное финансирование для предпринимателей.</p>
-            <p>Предоставим займы на оборотку, выполнение тендера, закупку товаров и сырья.</p>
-            <ul class="text-center list-unstyled">
-                <li>До 3 000 000 руб.</li>
-                <li>Рассмотрение заявки за 1 день</li>
-                <li>Минимальный пакет документов</li>
-                <li>Залог не обязателен</li>
-                <li>Без комиссий и обязательного страхования</li>
-            </ul>
+	                <div class="col-md-6 mb-r text-right" >
+                            <img src="img/photos/img_08.jpg"/>	
+                	</div>
+        	</div>
         </section>
         <!--/Section: Займы малому бизнесу-->
 
@@ -290,63 +324,6 @@
 
         <!--Footer Links-->
         <div class="container-fluid">
-
-            <!--
-            <div class="row">
-
-                <div class="col-lg-2 col-md-6 ml-auto">
-                    <h5 class="title font-bold mt-3 mb-4">Сроки займов</h5>
-                    <ul>
-                        <li><a href="#!">На 10 дней</a></li>
-                        <li><a href="#!">На 20 дней</a></li>
-                        <li><a href="#!">На 30 дней</a></li>
-                        <li><a href="#!">На 60 дней</a></li>
-                        <li><a href="#!">На 90 дней</a></li>
-                        <li><a href="#!">На 6 месяцев</a></li>
-                    </ul>
-                </div>
-
-                <hr class="w-100 clearfix d-sm-none">
-
-                <div class="col-lg-3 col-md-6 ml-auto">
-                    <h5 class="title font-bold mt-3 mb-4">Способы получения</h5>
-                    <ul>
-                        <li><a href="#!">На карту</a></li>
-                        <li><a href="#!">Без карты</a></li>
-                        <li><a href="#!">На карту Маэстро</a></li>
-                        <li><a href="#!">Займы наличными</a></li>
-                        <li><a href="#!">На Яндекс Кошелек</a></li>
-                        <li><a href="#!">На карту Сбербанка</a></li>
-                    </ul>
-                </div>
-
-                <hr class="w-100 clearfix d-sm-none">
-
-                <div class="col-lg-2 col-md-6 ml-auto">
-                    <h5 class="title font-bold mt-3 mb-4">Преимущества</h5>
-                    <ul>
-                        <li><a href="#!">Без ндфл</a></li>
-                        <li><a href="#!">Без справок</a></li>
-                        <li><a href="#!">Мгновенно</a></li>
-                        <li><a href="#!">По паспорту</a></li>
-                        <li><a href="#!">Без страховки</a></li>
-                        <li><a href="#!">Под проценты</a></li>
-                    </ul>
-                </div>
-
-                <hr class="w-100 clearfix d-sm-none">
-
-                <div class="col-lg-2 col-md-6 ml-auto">
-                    <h5 class="title font-bold mt-3 mb-4">Выдаем займы</h5>
-                    <ul>
-                        <li><a href="#!">Студентам</a></li>
-                        <li><a href="#!">Пенсионерам</a></li>
-                        <li><a href="#!">С просрочками</a></li>
-                    </ul>
-                </div>
-
-            </div>
-        -->
             
             <div class="row" style="">
                 <div class="col-lg-4 col-md-6 ml-auto">
@@ -365,8 +342,9 @@
 
                 <div class="col-lg-3 col-md-6 ml-auto">
                     <ul>
-                        <li><a class="nav-link" href="#" onclick="$('html,body').animate({ scrollTop: $('#features-for-people').offset().top - 150 }, 1000);$('.collapse').collapse('hide')">Займы физ лицам</a></li>
-                        <li><a class="nav-link" href="#" onclick="$('html,body').animate({ scrollTop: $('#features-for-company').offset().top - 150 }, 1000);$('.collapse').collapse('hide')">Займы малому бизнесу </a></li>
+                        <li><a class="nav-link" href="#" onclick="$('html,body').animate({ scrollTop: $('#ticket').offset().top - 150 }, 1000);$('.collapse').collapse('hide')">Заявка на займ</a></li>                    	
+                        <li><a class="nav-link" href="#" onclick="$('html,body').animate({ scrollTop: $('#features-for-people').offset().top - 150 }, 1000);$('.collapse').collapse('hide')">Займы частным лицам</a></li>
+                        <li><a class="nav-link" href="#" onclick="$('html,body').animate({ scrollTop: $('#features-for-company').offset().top - 150 }, 1000);$('.collapse').collapse('hide')">Займы малому бизнесу</a></li>
                     </ul>
                 </div>
             </div>
@@ -462,7 +440,7 @@
             const config = { headers: { 'Content-Type': ' application/x-www-form-urlencoded' } };
             axios.post('send.php', jsonToFormEncoded(data), config)
                 .then(function (res) {
-                    alert('Мы с вами свяжемся');
+                    alert('Спасибо !');
                 })
                 .catch(function() { 
                     alert('Ошибка при отправке запроса. Попробуйте еще раз.')
@@ -564,9 +542,9 @@
         new Vue({
             el: '#app',
             data: {
-                amount: 10000,
-                time: 7,
-                period: 1,
+                amount: 100000,
+                time: 3,
+                period: 30,
                 day: 1,
                 month: 30,
                 year: 365,
