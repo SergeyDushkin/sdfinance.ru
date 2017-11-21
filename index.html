@@ -8,7 +8,7 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="description" content="СД ФИНАНС - Займы физ лицам и малому бизнесу">
 
-    <title>SD finance</title>
+    <title>СД Финанс</title>
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -18,6 +18,8 @@
 
     <!-- Material Design Bootstrap -->
     <link href="css/mdb.min.css" rel="stylesheet">
+
+    <link rel="icon" type="image/png" href="img/icons/rub.png">
 
     <!-- Template styles -->
     <style>
@@ -449,6 +451,10 @@
             axios.post('send.php', jsonToFormEncoded(data), config)
                 .then(function (res) {
                     alert('Спасибо !');
+                    email: $('#client_email').val('');
+                    phone: $('#client_phone').val('');
+                    name: $('#client_name').val('');
+                    date: $('#client_date').val('');
                 })
                 .catch(function() { 
                     alert('Ошибка при отправке запроса. Попробуйте еще раз.')
