@@ -443,13 +443,28 @@
             return formBody.join("&");
         }
 
+        function getPeriodMessage() {
+            var period = $('input[name=options]:checked').val();
+            var time = $('#time').val();
+
+            if (period == 1)
+                return time + " " + units(time, {nom: 'день', gen: 'дня', plu: 'дней'});
+                        
+            if (period == 30)
+                return time + " " + units(time, {nom: 'месяц', gen: 'месяца', plu: 'месяцев'});
+
+            if (period== 365)
+                return time + " " + units(time, {nom: 'год', gen: 'года', plu: 'лет'});
+        }
+
         function sendMail() {
             var data = {
                 phone: $('#client_phone').val(),
                 name: $('#client_name').val(),
                 date: $('#client_date').val(),
-                message: 'Займ ' + $('#amount').val() + ' рублей на ' + $('#time').val() + ' * ' + $('input[name=options]:checked').val() + ' дней с платежом: ' + $('#payment').val(),        
-        };
+                message: 'Займ ' + $('#amount').val() + ' рублей на ' + getPeriodMessage() + ' с платежом: ' + $('#payment').val(),        
+            };
+            
             const config = { headers: { 'Content-Type': ' application/x-www-form-urlencoded' } };
             axios.post('send.php', jsonToFormEncoded(data), config)
                 .then(function (res) {
