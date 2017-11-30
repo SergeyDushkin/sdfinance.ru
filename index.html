@@ -22,15 +22,15 @@
     <link rel="icon" type="image/png" href="img/icons/rub.png">
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
-	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-110088177-1"></script>
-	<script>
-	  window.dataLayer = window.dataLayer || [];
-	  function gtag(){dataLayer.push(arguments);}
-	  gtag('js', new Date());
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-110088177-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
 
-	  gtag('config', 'UA-110088177-1');
-	</script>
-	
+      gtag('config', 'UA-110088177-1');
+    </script>
+    
     <!-- Template styles -->
     <style>
         /* TEMPLATE STYLES */
@@ -78,7 +78,7 @@
                             <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Займы
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-	                        	<a class="dropdown-item" href="#" onclick="$('html,body').animate({ scrollTop: $('#ticket').offset().top - 150 }, 1000);$('.collapse').collapse('hide')">Заявка на займ</a>
+                                <a class="dropdown-item" href="#" onclick="$('html,body').animate({ scrollTop: $('#ticket').offset().top - 150 }, 1000);$('.collapse').collapse('hide')">Заявка на займ</a>
                                 <a class="dropdown-item" href="#" onclick="$('html,body').animate({ scrollTop: $('#features-for-people').offset().top - 150 }, 1000);$('.collapse').collapse('hide')">Частным лицам</a>
                                 <a class="dropdown-item" href="#" onclick="$('html,body').animate({ scrollTop: $('#features-for-company').offset().top - 150 }, 1000);$('.collapse').collapse('hide')">Малому бизнесу</a>
                             </div>
@@ -133,23 +133,23 @@
 
         <!--Section: Займы малому бизнесу-->
         <section id="ticket" class="text-center">
-	        <div class="divider-new pt-3">
-            	<h2 class="h2-responsive">Оформление заявки</h2>
-        	</div>
+            <div class="divider-new pt-3">
+                <h2 class="h2-responsive">Оформление заявки</h2>
+            </div>
 
             <div class="row text-center">
-            	<div class="col-md-3 mb-r"></div>
+                <div class="col-md-3 mb-r"></div>
                 <div class="col-md-6 mb-r">
                     <div class="md-form">
-                        <input type="range" v-bind:min="10000" v-bind:max="1000000" step="1000" id="amount" v-model.number="amount" class="form-control validate" require>
+                        <input type="range" v-bind:min="30000" v-bind:max="1000000" step="1000" id="amount" v-model.number="amount" class="form-control validate" require>
                         <label for="form1" class="active">Сумма ({{ this.formattedAmount }})</label>
                     </div>
                 </div>
                 <div class="col-md-3 mb-r"></div>
             </div>
 
-			<div class="row text-center">
-				<div class="col-md-4 mb-r"></div>
+            <div class="row text-center">
+                <div class="col-md-4 mb-r"></div>
                 <div class="col-md-4 mb-r">
                     <div class="md-form">
                         <input type="range" v-bind:min="min" v-bind:max="max" id="time" v-model.number="time" class="form-control" require>
@@ -169,9 +169,9 @@
                     </div>
                 </div>
                 <div class="col-md-4 mb-r"></div>
-			</div>
+            </div>
 
-			<div class="row text-center">
+            <div class="row text-center">
                 <div class="col-md-4"></div>
                 <div class="col-md-4">
                     <div class="md-form">
@@ -183,33 +183,27 @@
             </div>
 
             <div class="row text-center">
-                <div class="col-md-3">
+                <div class="col-md-4">
                     <div class="md-form">
                         <input type="text" id="client_name" name="fio" class="form-control validate">
                         <label for="fio" class="active">Имя</label>
                     </div>
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-4">
                     <div class="md-form">
-                        <input type="date" id="client_date" name="date"class="form-control validate">
-                        <label for="date" class="active">Дата рождения</label>
+            <input type="number" id="client_date" name="date" class="form-control validate" value="1980" min="1955" max="2000">
+                        <label for="date" class="active">Год рождения</label>
                     </div>
                 </div>
-                <div class="col-md-3 mb-r">
+                <div class="col-md-4 mb-r">
                     <div class="md-form form-group text-left">
                         <input type="tel" id="client_phone" name="phone" class="form-control validate" pattern="(\+?\d[- .]*){7,13}">
                         <label for="phone" class="active">Телефон</label>
                     </div>
                 </div>
-                <div class="col-md-3 mb-r">
-                    <div class="md-form form-group text-left">
-                        <input type="email" id="client_email" name="client_email" class="form-control validate">
-                        <label for="client_email" class="active">Еmail</label>
-                    </div>
-                </div>
             </div>
             
-			<div class="row text-center">
+    <div class="row text-center">
                 <div class="col-md-4"></div>
                 <div class="col-md-4">
                     <button class="btn btn-sm btn-primary waves-effect waves-light" onclick="sendMail()" type="button">Отправить заявку
@@ -231,20 +225,20 @@
              
             <div class="row text-center">
                 <div class="col-md-12">
-                	<h4 class="card-title text-center">Безграничный кредит доверия</h4>
-		            <p>Команда из профессиональных финансовых консультантов поможет вам подобрать наиболее удобные для вас условия кредитования. Только наша компания обеспечивает индивидуальный подход к каждому клиенту</p>
+                    <h4 class="card-title text-center">Безграничный кредит доверия</h4>
+                    <p>Команда из профессиональных финансовых консультантов поможет вам подобрать наиболее удобные для вас условия кредитования. Только наша компания обеспечивает индивидуальный подход к каждому клиенту</p>
 
-                	<img class="img-fluid" src="img/photos/img_02.jpg"/>	
+                    <img class="img-fluid" src="img/photos/img_02.jpg"/>    
                     
                     <hr class="w-100 clearfix d-sm-none">
 
-		            <p>СД ФИНАНС предлагает вам новое решение – быстрый займ денег без лишних документов. При этом взять деньги в долг Вы сможете на требуемый Вам срок и без дополнительных комиссий.</p>
+                    <p>СД ФИНАНС предлагает вам новое решение – быстрый займ денег без лишних документов. При этом взять деньги в долг Вы сможете на требуемый Вам срок и без дополнительных комиссий.</p>
                 </div>
-			</div>
+            </div>
 
             <div class="row">
-            	<div class="col-md-12 mb-r text-left">
-            	</div>
+                <div class="col-md-12 mb-r text-left">
+                </div>
             </div>
         </section>
         <!--Section: About-->
@@ -256,16 +250,16 @@
         <!--Section: Займы частным лицам-->
         <section class="text-center" id="features-for-people">
 
-	            <div class="row">
-	                <div class="col-md-3 mb-r text-left" >
-                        <img class="img-fluid" src="img/photos/img_04.jpg"/>	
-                	</div>
+                <div class="row">
+                    <div class="col-md-3 mb-r text-left" >
+                        <img class="img-fluid" src="img/photos/img_04.jpg"/>    
+                    </div>
 
-            		<div class="col-md-9 mb-r text-left">
-			            <p>Срочно нужны деньги в долг? Хотели бы получить наличные быстро и без залога? Нужно оплатить лечение, путевку или обучение. Не хватает на ремонт, покупку мебели, выплату по кредиту за автомобиль.</p>
-		            	<p>Без ненужных формальностей предоставим Вам кредит под залог авто или под залог недвижимости. Не потребуем от Вас лишних документов и справок о доходах. И у нас нет никаких неприятных сюрпризов в виде дополнительных платежей, комиссий или скрытых процентов.</p>
-            		</div>
-            	</div>
+                    <div class="col-md-9 mb-r text-left">
+                        <p>Срочно нужны деньги в долг? Хотели бы получить наличные быстро и без залога? Нужно оплатить лечение, путевку или обучение. Не хватает на ремонт, покупку мебели, выплату по кредиту за автомобиль.</p>
+                        <p>Без ненужных формальностей предоставим Вам кредит под залог авто или под залог недвижимости. Не потребуем от Вас лишних документов и справок о доходах. И у нас нет никаких неприятных сюрпризов в виде дополнительных платежей, комиссий или скрытых процентов.</p>
+                    </div>
+                </div>
         </section>
         <!--/Section: Займы частным лицам-->
 
@@ -275,23 +269,23 @@
 
         <!--Section: Займы малому бизнесу-->
         <section class="text-center" id="features-for-company">
-        	 <div class="row">
-            		<div class="col-md-6 mb-r text-left">
-			            <p>Доступное финансирование для предпринимателей.</p>
-			            <p>Предоставим оборотные средства на выполнение тендера, закупку товаров и сырья.</p>
-			            <ul class="text-left">
-			                <li>До 3 000 000 руб.</li>
-			                <li>Рассмотрение заявки за 1 день</li>
-			                <li>Минимальный пакет документов</li>
-			                <li>Залог не обязателен</li>
-			                <li>Без комиссий и обязательного страхования</li>
-			            </ul>
-	        		</div>
+             <div class="row">
+                    <div class="col-md-6 mb-r text-left">
+                        <p>Доступное финансирование для предпринимателей.</p>
+                        <p>Предоставим оборотные средства на выполнение тендера, закупку товаров и сырья.</p>
+                        <ul class="text-left">
+                            <li>До 3 000 000 руб.</li>
+                            <li>Рассмотрение заявки за 1 день</li>
+                            <li>Минимальный пакет документов</li>
+                            <li>Залог не обязателен</li>
+                            <li>Без комиссий и обязательного страхования</li>
+                        </ul>
+                    </div>
 
-	                <div class="col-md-6 mb-r text-right" >
-                        <img class="img-fluid" src="img/photos/img_08.jpg"/>	
-                	</div>
-        	</div>
+                    <div class="col-md-6 mb-r text-right" >
+                        <img class="img-fluid" src="img/photos/img_08.jpg"/>    
+                    </div>
+            </div>
         </section>
         <!--/Section: Займы малому бизнесу-->
 
@@ -361,7 +355,7 @@
 
                 <div class="col-lg-3 col-md-6 ml-auto">
                     <ul>
-                        <li><a class="nav-link" href="#" onclick="$('html,body').animate({ scrollTop: $('#ticket').offset().top - 150 }, 1000);$('.collapse').collapse('hide')">Заявка на займ</a></li>                    	
+                        <li><a class="nav-link" href="#" onclick="$('html,body').animate({ scrollTop: $('#ticket').offset().top - 150 }, 1000);$('.collapse').collapse('hide')">Заявка на займ</a></li>                     
                         <li><a class="nav-link" href="#" onclick="$('html,body').animate({ scrollTop: $('#features-for-people').offset().top - 150 }, 1000);$('.collapse').collapse('hide')">Займы частным лицам</a></li>
                         <li><a class="nav-link" href="#" onclick="$('html,body').animate({ scrollTop: $('#features-for-company').offset().top - 150 }, 1000);$('.collapse').collapse('hide')">Займы малому бизнесу</a></li>
                     </ul>
@@ -451,17 +445,15 @@
 
         function sendMail() {
             var data = {
-                email: $('#client_email').val(),
                 phone: $('#client_phone').val(),
                 name: $('#client_name').val(),
                 date: $('#client_date').val(),
                 message: 'Займ ' + $('#amount').val() + ' рублей на ' + $('#time').val() + ' * ' + $('input[name=options]:checked').val() + ' дней с платежом: ' + $('#payment').val(),        
-	    };
+        };
             const config = { headers: { 'Content-Type': ' application/x-www-form-urlencoded' } };
             axios.post('send.php', jsonToFormEncoded(data), config)
                 .then(function (res) {
                     alert('Спасибо !');
-                    email: $('#client_email').val('');
                     phone: $('#client_phone').val('');
                     name: $('#client_name').val('');
                     date: $('#client_date').val('');
@@ -499,12 +491,12 @@
         }
 
         /*
-            50,000	200,000	500,000	1,000,000
-        14	730%	365%	183%	91%
-        30	365%	183%	91%	    48%
-        90	183%	91%	    48%	    48%
-        180	91%	    48%	    48%	    48%
-        365	48%	    48%	    48%	    48%
+            50,000  200,000 500,000 1,000,000
+        14  730%    365%    183%    91%
+        30  365%    183%    91%     48%
+        90  183%    91%     48%     48%
+        180 91%     48%     48%     48%
+        365 48%     48%     48%     48%
         */
 
         var matrix = [];
