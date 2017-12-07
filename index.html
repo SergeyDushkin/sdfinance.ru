@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <meta name="description" content="СД ФИНАНС - Займы физ лицам и малому бизнесу">
+    <meta name="description" content="СД ФИНАНС - Займы и кредиты физическим лицам и малому бизнесу">
 
     <title>СД Финанс</title>
 
@@ -105,7 +105,7 @@
                         <li>
                             <h1 class="h1-responsive font-bold wow fadeInDown title" data-wow-delay="0.2s">СД ФИНАНС</h1></li>
                         <li>
-                            <p class="lead mt-4 mb-5 wow fadeInDown">Поддержит финансами Вас и Ваш бизнес</p>
+                            <p class="lead mt-4 mb-5 wow fadeInDown">Деньги для Вас и Вашего бизнеса</p>
                         </li>
 
                         <li>
@@ -113,7 +113,7 @@
                         </li>
 
                         <li>
-                            <button class="btn btn-lg btn-danger waves-effect waves-light" onclick="$('html,body').animate({ scrollTop: $('#ticket').offset().top - 150 }, 1000);">Получить деньги</button>
+                            <button class="btn btn-lg btn-danger waves-effect waves-light" onclick="$('html,body').animate({ scrollTop: $('#ticket').offset().top - 150 }, 1000);">Получить</button>
                         </li>
 
                         <li class="payment">
@@ -542,25 +542,62 @@
         matrix.push({ order: 118, amount: 1000000, time: 180, percent: 48 });
         matrix.push({ order: 119, amount: 1000000, time: 1100, percent: 48 });
 
-        function getCalculatedAmount(amount, time)
+		function PMT(ir, np, pv, fv, type) {
+		    /*
+		     * ir   - interest rate per month
+		     * np   - number of periods (months)
+		     * pv   - present value
+		     * fv   - future value
+		     * type - when the payments are due:
+		     *        0: end of the period, e.g. end of month (default)
+		     *        1: beginning of period
+		     */
+		    var pmt, pvif;
+
+		    fv || (fv = 0);
+		    type || (type = 0);
+
+		    if (ir === 0)
+		        return -(pv + fv)/np;
+
+		    pvif = Math.pow(1 + ir, np);
+		    pmt = - ir * pv * (pvif + fv) / (pvif - 1);
+
+		    if (type === 1)
+		        pmt /= (1 + ir);
+
+		    return pmt;
+		}
+
+        function getCalculatedAmount(amount, time, period)
         {
             var result = matrix.filter(function(x, idx) {
-                return x.amount >= amount && x.time >= time;
+                return x.amount >= amount && x.time >= (time * period);
             }); 
             
             var rate = result[0];
             var dayRate = (rate.percent / 100) / 365;
-
-            var percentAmount = amount * dayRate * time;
+            var percentAmount = amount * dayRate * (time * period);
             var totalAmount = amount + percentAmount;
-            var amountByDay = totalAmount / time;
+            var amountByDay = totalAmount / (time * period);
             var amountByMonth = amountByDay * 30;
+
+			if (period == 365) {
+            	var annuityPMT = PMT(rate.percent/100/(time*12), time*12, amount);
+			} else if (period = 30) {
+				var annuityPMT = PMT(rate.percent/100/time, time, amount);
+			}
+			annuityPMT = Math.abs(annuityPMT);
 
             console.log('dayRate: ' + dayRate);
             console.log('percentAmount: ' + percentAmount);
             console.log('totalAmount: ' + totalAmount);
             console.log('amountByDay: ' + amountByDay);
             console.log('amountByMonth: ' + amountByMonth);
+			console.log('annuityPMT: ' + annuityPMT);
+			if (annuityPMT < amountByMonth){
+				amountByMonth = annuityPMT;	
+			}
 
             return { 
                 percentAmount: percentAmount,
@@ -584,7 +621,7 @@
             },
             computed: {
                 payment: function () {
-                    var calculatedAmount = getCalculatedAmount(this.amount, this.time * this.period);
+                    var calculatedAmount = getCalculatedAmount(this.amount, this.time, this.period);
                     if (this.time * this.period < this.month)
                         return Math.round(calculatedAmount.totalAmount).toLocaleString('ru') + '₽'
                     else
