@@ -61,30 +61,30 @@
 <body>
 
     <header>
-
         <!--Navbar-->
         <nav class="navbar navbar-expand-lg navbar-dark elegant-color-dark fixed-top">
             <div class="container">
-                <a class="navbar-brand" href="#">СД ФИНАНС</a>
+                <a class="navbar-brand" href="#" onclick="$('html,body').animate({ scrollTop: $('#Intro').offset().top - 50 }, 1000);$('.collapse').collapse('hide')">СД ФИНАНС</a>
+
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="#" onclick="$('html,body').animate({ scrollTop: $('#about').offset().top - 150 }, 1000);$('.collapse').collapse('hide')">О компании</a>
+                            <a class="nav-link" href="#" onclick="$('html,body').animate({ scrollTop: $('#about').offset().top - 50}, 1000);$('.collapse').collapse('hide')">Компания</a>
                         </li>
                         <li class="nav-item btn-group">
                             <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Займы
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                <a class="dropdown-item" href="#" onclick="$('html,body').animate({ scrollTop: $('#ticket').offset().top - 150 }, 1000);$('.collapse').collapse('hide')">Заявка на займ</a>
-                                <a class="dropdown-item" href="#" onclick="$('html,body').animate({ scrollTop: $('#features-for-people').offset().top - 150 }, 1000);$('.collapse').collapse('hide')">Частным лицам</a>
-                                <a class="dropdown-item" href="#" onclick="$('html,body').animate({ scrollTop: $('#features-for-company').offset().top - 150 }, 1000);$('.collapse').collapse('hide')">Малому бизнесу</a>
+                                <a class="dropdown-item" href="#" onclick="$('html,body').animate({ scrollTop: $('#ticket').offset().top - 50 }, 1000);$('.collapse').collapse('hide')">Заявка на кредит</a>
+                                <a class="dropdown-item" href="#" onclick="$('html,body').animate({ scrollTop: $('#features-for-people').offset().top - 50 }, 1000);$('.collapse').collapse('hide')">Частным лицам</a>
+                                <a class="dropdown-item" href="#" onclick="$('html,body').animate({ scrollTop: $('#features-for-company').offset().top - 50 }, 1000);$('.collapse').collapse('hide')">Малому бизнесу</a>
                             </div>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#" onclick="$('html,body').animate({ scrollTop: $('#contact').offset().top - 150 }, 1000);$('.collapse').collapse('hide')">Контакты</a>
+                            <a class="nav-link" href="#" onclick="$('html,body').animate({ scrollTop: $('#contact').offset().top - 50 }, 1000);$('.collapse').collapse('hide')">Контакты</a>
                         </li>
                     </ul>
                     <ul class="navbar-nav mr-auto">
@@ -98,7 +98,7 @@
         <!--/.Navbar-->
 
         <!--Intro Section-->
-        <section class="view intro-1 hm-black-strong">
+        <section class="view intro-1 hm-black-strong" id="Intro">
             <div class="full-bg-img flex-center">
                 <div class="container">
                     <ul>
@@ -143,18 +143,18 @@
             </div>
 
             <div class="row text-center">
-                <div class="col-md-3 mb-r"></div>
-                <div class="col-md-6 mb-r">
+                <div class="col-md-3"></div>
+                <div class="col-md-6">
                     <div class="md-form">
-                        <input type="range" v-bind:min="30000" v-bind:max="1000000" step="1000" id="amount" v-model.number="amount" class="form-control validate" require>
+                        <input type="range" v-bind:min="50000" v-bind:max="1000000" step="1000" id="amount" v-model.number="amount" class="form-control validate" require>
                         <label for="form1" class="active">Сумма ({{ this.formattedAmount }})</label>
                     </div>
                 </div>
-                <div class="col-md-3 mb-r"></div>
+                <div class="col-md-3"></div>
             </div>
 
             <div class="row text-center">
-                <div class="col-md-4 mb-r"></div>
+                <div class="col-md-4"></div>
                 <div class="col-md-4 mb-r">
                     <div class="md-form">
                         <input type="range" v-bind:min="min" v-bind:max="max" id="time" v-model.number="time" class="form-control" require>
@@ -162,18 +162,18 @@
                     </div>
 
                     <div class="btn-group" data-toggle="buttons">
-                        <label class="btn btn-primary btn-sm active" v-on:click="period=1;time=7;max=30">
+                        <label class="btn btn-primary btn-sm active" v-on:click="period=1;time=15;max=30">
                             <input type="radio" name="options" value="1"> дней
                         </label>
-                        <label class="btn btn-primary btn-sm" v-on:click="period=30;time=1;max=12">
-                            <input type="radio" name="options" value="30" checked> месяцев
+                        <label class="btn btn-primary btn-sm" v-on:click="period=30;time=6;max=12">
+                            <input type="radio" name="options" value="30"> месяцев
                         </label>
-                        <label class="btn btn-primary btn-sm" v-on:click="period=365;time=1;max=3">
-                            <input type="radio" name="options" value="365"> лет
+                        <label class="btn btn-primary btn-sm" v-on:click="period=365;time=2;max=3">
+                            <input type="radio" name="options" value="365" checked> лет
                         </label>
                     </div>
                 </div>
-                <div class="col-md-4 mb-r"></div>
+                <div class="col-md-4"></div>
             </div>
 
             <div class="row text-center">
@@ -218,41 +218,37 @@
             </div>
 
         </section>
-        <!--/Section: Займы малому бизнесу-->
 
-        <div class="divider-new pt-1">
-            <h2 class="h2-responsive" data-wow-delay="0.2s">О нас</h2>
-        </div>
+        <!--/Section: Займы малому бизнесу-->
 
         <!--Section: About-->
         <section id="about" class="text-center" data-wow-delay="0.2s">
-             
+            
+            <div class="divider-new pt-1">
+            	<h2 class="h2-responsive" data-wow-delay="0.2s">Компания</h2>
+        	</div>
+
             <div class="row text-center">
                 <div class="col-md-12">
                     <h4 class="card-title text-center">Безграничный кредит доверия</h4>
+
                     <p>Команда из профессиональных финансовых консультантов поможет вам подобрать наиболее удобные для вас условия кредитования. Только наша компания обеспечивает индивидуальный подход к каждому клиенту</p>
 
-                    <img class="img-fluid" src="img/photos/img_02.jpg"/>    
-                    
-                    <hr class="w-100 clearfix d-sm-none">
+                    <img class="img-fluid" src="img/photos/img_02.jpg"/>
 
-                    <p>СД ФИНАНС предлагает вам новое решение – быстрый займ денег без лишних документов. При этом взять деньги в долг Вы сможете на требуемый Вам срок и без дополнительных комиссий.</p>
+                    <p>СД ФИНАНС предлагает вам новое решение – быстрый займ денег без лишних документов. При этом взять деньги в долг Вы можете на требуемый Вам срок и без дополнительных комиссий.</p>
                 </div>
             </div>
 
-            <div class="row">
-                <div class="col-md-12 mb-r text-left">
-                </div>
-            </div>
         </section>
         <!--Section: About-->
 
-        <div class="divider-new pt-1">
-            <h2 class="h2-responsive">Займы частным лицам</h2>
-        </div>
-
         <!--Section: Займы частным лицам-->
         <section class="text-center" id="features-for-people">
+
+		        <div class="divider-new pt-1">
+		            <h2 class="h2-responsive">Займы частным лицам</h2>
+		        </div>
 
                 <div class="row">
                     <div class="col-md-3 mb-r text-left" >
@@ -267,12 +263,13 @@
         </section>
         <!--/Section: Займы частным лицам-->
 
-        <div class="divider-new pt-1">
-            <h2 class="h2-responsive">Займы малому бизнесу</h2>
-        </div>
-
-        <!--Section: Займы малому бизнесу-->
+        <!--Section: Кредиты малому бизнесу-->
         <section class="text-center" id="features-for-company">
+
+	        <div class="divider-new pt-1">
+            	<h2 class="h2-responsive">Кредиты малому бизнесу</h2>
+        	</div>
+
              <div class="row">
                     <div class="col-md-6 mb-r text-left">
                         <p>Доступное финансирование для предпринимателей.</p>
@@ -293,12 +290,13 @@
         </section>
         <!--/Section: Займы малому бизнесу-->
 
-        <div class="divider-new">
-            <h2 class="h2-responsive">Контакты</h2>
-        </div>
-
         <!--Section: Contact-->
         <section id="contact">
+
+	        <div class="divider-new">
+            	<h2 class="h2-responsive">Контакты</h2>
+        	</div>
+
             <div class="row">
                 <!--First column-->
                 <div class="col-md-8 mb-5">
@@ -344,7 +342,8 @@
             
             <div class="row">
                 <div class="col-lg-4 col-md-6 ml-auto">
-                    <h5 class="title font-bold mt-3 mb-4">СД ФИНАНС</h5>
+                    <a class="title font-bold" href="#" onclick="$('html,body').animate({ scrollTop: $('#Intro').offset().top - 50 }, 1000);$('.collapse').collapse('hide')">СД ФИНАНС</a>
+
                     <ul>
                         <li>123100, г. Москва, Пресненская наб., 12, Москва Сити, Башня "Федерация"</li>
                         <li><a href="tel:+79773131770"> +7 977 31 31 770</a></li>
@@ -353,15 +352,15 @@
 
                 <div class="col-lg-3 col-md-6 ml-auto">
                     <ul>
-                        <li><a class="nav-link" href="#" onclick="$('html,body').animate({ scrollTop: $('#about').offset().top - 150 }, 1000);$('.collapse').collapse('hide')">О компании</a></li>
+                        <li><a class="nav-link" href="#" onclick="$('html,body').animate({ scrollTop: $('#about').offset().top - 50 }, 1000);$('.collapse').collapse('hide')">Компания</a></li>
                     </ul>
                 </div>
 
                 <div class="col-lg-3 col-md-6 ml-auto">
                     <ul>
-                        <li><a class="nav-link" href="#" onclick="$('html,body').animate({ scrollTop: $('#ticket').offset().top - 150 }, 1000);$('.collapse').collapse('hide')">Заявка на займ</a></li>                     
-                        <li><a class="nav-link" href="#" onclick="$('html,body').animate({ scrollTop: $('#features-for-people').offset().top - 150 }, 1000);$('.collapse').collapse('hide')">Займы частным лицам</a></li>
-                        <li><a class="nav-link" href="#" onclick="$('html,body').animate({ scrollTop: $('#features-for-company').offset().top - 150 }, 1000);$('.collapse').collapse('hide')">Займы малому бизнесу</a></li>
+                        <li><a class="nav-link" href="#" onclick="$('html,body').animate({ scrollTop: $('#ticket').offset().top - 50 }, 1000);$('.collapse').collapse('hide')">Заявка на кредит</a></li>                     
+                        <li><a class="nav-link" href="#" onclick="$('html,body').animate({ scrollTop: $('#features-for-people').offset().top - 50 }, 1000);$('.collapse').collapse('hide')">Займы частным лицам</a></li>
+                        <li><a class="nav-link" href="#" onclick="$('html,body').animate({ scrollTop: $('#features-for-company').offset().top - 50 }, 1000);$('.collapse').collapse('hide')">Кредиты малому бизнесу</a></li>
                     </ul>
                 </div>
             </div>
@@ -614,14 +613,14 @@
         new Vue({
             el: '#app',
             data: {
-                amount: 100000,
-                time: 3,
-                period: 30,
+                amount: 150000,
+                time: 2,
+                period: 365,
                 day: 1,
                 month: 30,
                 year: 365,
                 min: 1,
-                max: 12
+                max: 3
             },
             computed: {
                 payment: function () {
