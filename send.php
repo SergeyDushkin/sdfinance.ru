@@ -83,14 +83,14 @@
 
 	if ($contact) {
 
-		$contact->name = $fdate . " " . $name;
+		$contact->name = $name . " " . $fdate;
 		$contact->phoneNumber = $phone;
 		//$contact->email = $email_address;
 		$contact->content = $message;
 		$contactAfterUpdate = rapidweb\googlecontacts\factories\ContactFactory::submitUpdates($contact);
 	} else {
 		
-		$name = $fdate . " " . $name;
+		$name = $name . " " . $fdate;
 		$phoneNumber = $phone;
 		$emailAddress = $email;
 		$note = $message;
