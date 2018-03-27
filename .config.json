@@ -1,0 +1,7 @@
+{
+    "clientID": "5455990222-pia8eatbbupnhkih9h4nu01g2k2rdsuh.apps.googleusercontent.com",
+    "clientSecret": "UIxm2Wp2qMG8wz0eOvnp5itm",
+    "redirectUri": "http://helpdesk.sibintek.ru:8089/vendor/rapidwebltd/php-google-contacts-v3-api/redirect-handler.php",
+    "developerKey": "",
+    "refreshToken": "1/2f_rtM0xQjMtxNp6RTuAm5pdoxVSSh7tbLHe7FYguNA"
+}

@@ -1,4 +1,6 @@
 <?php   
+	require_once 'vendor/autoload.php';
+
     $name = strip_tags(htmlspecialchars($_POST['name']));
     $date = strip_tags(htmlspecialchars($_POST['date']));
 //    $email_address = strip_tags(htmlspecialchars($_POST['email']));
@@ -40,5 +42,59 @@
     	$result = curl_exec($ch);
     	curl_close($ch);
 
+	$contacts = rapidweb\googlecontacts\factories\ContactFactory::getAll();
+
+	function findByPhoneOrEmail($arg_1, $arg_2, $arg_3)
+	{
+		foreach ($arg_1 as $xmlContactsEntry) {
+	
+			if (property_exists($xmlContactsEntry, 'phoneNumber'))
+			{
+				$a = $xmlContactsEntry->phoneNumber;
+		
+				foreach($a as $p) {
+					$n = $p['number'];
+					$letters = array(' ', '-', '(', ')');
+					if (str_replace($letters, '', $n) == str_replace($letters, '', $arg_2)) {
+						return $xmlContactsEntry;
+					}
+				}
+			}
+		
+			if (property_exists($xmlContactsEntry, 'email'))
+			{
+				$b = (array) $xmlContactsEntry->email;
+	
+				foreach($b as $p) {
+					$n = $p['email'];
+					if ($n == $arg_3) {
+						return $xmlContactsEntry;
+					}
+				}
+			}
+		}
+	}
+	
+	$fdate = $now->format('Y-m-d');
+	$email = "";
+
+	$contact = findByPhoneOrEmail($contacts, $phoneNumber, $email);
+
+	if ($contact) {
+
+		$contact->name = $fdate . " " . $name;
+		$contact->phoneNumber = $phone;
+		//$contact->email = $email_address;
+		$contact->content = $message;
+		$contactAfterUpdate = rapidweb\googlecontacts\factories\ContactFactory::submitUpdates($contact);
+	} else {
+		
+		$name = $fdate . " " . $name;
+		$phoneNumber = $phone;
+		$emailAddress = $email;
+		$note = $message;
+		
+		$newContact = rapidweb\googlecontacts\factories\ContactFactory::create($name, $phoneNumber, $emailAddress, $note);
+	}
 	return true;
 ?>
